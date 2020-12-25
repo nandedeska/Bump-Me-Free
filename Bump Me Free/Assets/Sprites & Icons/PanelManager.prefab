@@ -1,0 +1,187 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6441262164166688532
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6441262164166688534}
+  - component: {fileID: 6441262164166688535}
+  - component: {fileID: -427359521519602655}
+  m_Layer: 0
+  m_Name: PanelManager
+  m_TagString: PanelManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6441262164166688534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6441262164166688532}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6441262164166688535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6441262164166688532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d5c57ab67a10b47b77d65c73b3c001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathPanel: {fileID: 6439931623507441102, guid: c5baaefa132d1d44bb725b13ee34f586,
+    type: 3}
+  livesPanel: {fileID: 3944221343071651312, guid: 17ed85c9255eb684884740febd4c8545,
+    type: 3}
+  adSkipped: {fileID: 4233942449606790513, guid: 4eb97fbf3058d8241802cc2f760b767b,
+    type: 3}
+  adFailed: {fileID: 7893813443242204994, guid: 961d5b4cb3deabd4fa1506c15b2e3670,
+    type: 3}
+  levelTransition: {fileID: 1050361026260665512, guid: f90b7fd8179a9c0489fb724db19a258f,
+    type: 3}
+  transitionCover: {fileID: 2611983597154967845, guid: 9a1460e7b6efa364690f7e1f519190e1,
+    type: 3}
+  explosion:
+  - {fileID: 4009057916628370548, guid: f99e11e3a1a317849b80945f4af73101, type: 3}
+  - {fileID: 6998801717990940463, guid: 9f141775cff34d54d8a7d704522d919f, type: 3}
+  - {fileID: 4538457379466041416, guid: 2deaaa62df0466c479837c276aeea601, type: 3}
+  explosionSFX:
+  - {fileID: 8300000, guid: 039e1b8bb724c894aad48da4442c6afa, type: 3}
+  - {fileID: 8300000, guid: c1489f7f9bef77f44a94b88c0023ef30, type: 3}
+  jumpSFX:
+  - {fileID: 8300000, guid: fa4dd2423f6cc9d44b7219347be6f65b, type: 3}
+  - {fileID: 8300000, guid: e5ab0d7dcbe4b3b44bad36cf42a03740, type: 3}
+  - {fileID: 8300000, guid: a23daf6725d05ed4aa2a1a947b0b2ed9, type: 3}
+  bounceSFX:
+  - {fileID: 8300000, guid: 1f2df5868fd51a9428d877253f110963, type: 3}
+  - {fileID: 8300000, guid: 69338e39614d4be49b9c71dc491d6e7b, type: 3}
+  - {fileID: 8300000, guid: b6d0d68825f016b4eb67d34848f8538f, type: 3}
+  skins:
+  - {fileID: 8188199479249878087, guid: 7001a0c6ec10a62459c9376782dca5b8, type: 3}
+  - {fileID: 1440764986329773018, guid: 05258fe98f439f04d96fa5c2d7a53842, type: 3}
+  - {fileID: 93922392450979730, guid: 40c96d89b7dea4d468b963270320b8fb, type: 3}
+  - {fileID: 9217632492523856630, guid: f4cbd01edb5ef4d4aa2989b067bb111e, type: 3}
+  - {fileID: 7055003182020667894, guid: d8cd4f08f539e474892219b4b217eca4, type: 3}
+  - {fileID: 3081680861186639603, guid: 0377a253132d2e2439353e98501fe19a, type: 3}
+  - {fileID: 7851507627700104087, guid: 4ce61cef9da2200409623adb5b4930cb, type: 3}
+  - {fileID: 4935711891559453391, guid: 2a67708cc42346a4f9872d1b2b042736, type: 3}
+  - {fileID: 2684546890400075568, guid: d9d5e8af959da1042b28727dbfdb0cb5, type: 3}
+  - {fileID: 4684983380633816834, guid: 82ec423adbc60a743959feb0ca852b49, type: 3}
+  - {fileID: 813132023204712905, guid: 0d37c6c8400098546b5db17877d955da, type: 3}
+  postProcessing: {fileID: 11400000, guid: f3a2f5cd8eb7876409498cf2734bb51e, type: 2}
+  postProcessResources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4,
+    type: 2}
+  targetSize: {fileID: 0}
+  targetSize16_9: {fileID: 0}
+  jumpFont: {fileID: 12800000, guid: 2e9423b80f004d74a9cd7162436df813, type: 3}
+--- !u!82 &-427359521519602655
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6441262164166688532}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.85
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

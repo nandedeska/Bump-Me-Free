@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 469c24fdb3bd6431b92cc1465bd9166b, type: 3}
+  m_Name: RemoteConfigDataStoreAsset
+  m_EditorClassIdentifier: 
+  rsKeyList:
+  - metadata:
+      entityId: e5fdd26b-5783-4018-b142-91dfdc4f5f11
+    rs:
+      key: Version
+      type: string
+      value: v1.1
+  rsLastCachedKeyList:
+  - metadata:
+      entityId: e5fdd26b-5783-4018-b142-91dfdc4f5f11
+    rs:
+      key: Version
+      type: string
+      value: v1.1
+  configId: e63d9069-ff56-4f9b-a893-a1e619bad2d5
+  currentEnvironmentId: c4e6680b-6ab1-4014-966c-8143391178a3
+  environments:
+  - id: c4e6680b-6ab1-4014-966c-8143391178a3
+    appId: 
+    name: Development (Default)
+    description: 
+    createdAt: 2020-12-12T01:24:06Z
+    updatedAt: 2020-12-13T13:07:47Z
+  - id: ce6018e0-384a-451b-ad20-8836a6e2a884
+    appId: 
+    name: Release
+    description: 
+    createdAt: 2020-12-12T01:24:06Z
+    updatedAt: 2020-12-13T13:07:47Z
+  rulesList:
+  - id: e8f1c8b7-a6cf-4f71-81e3-82744dffc0df
+    name: Update Checker
+    enabled: 1
+    priority: 1000
+    type: 
+    condition: 
+    rolloutPercentage: 100
+    value:
+    - metadata:
+        entityId: e5fdd26b-5783-4018-b142-91dfdc4f5f11
+      rs:
+        key: Version
+        type: string
+        value: v1.0.2
+    startDate: 
+    endDate: 
+  lastCachedRulesList:
+  - id: e8f1c8b7-a6cf-4f71-81e3-82744dffc0df
+    name: Update Checker
+    enabled: 1
+    priority: 1000
+    type: 
+    condition: 
+    rolloutPercentage: 100
+    value:
+    - metadata:
+        entityId: e5fdd26b-5783-4018-b142-91dfdc4f5f11
+      rs:
+        key: Version
+        type: string
+        value: v1.0.2
+    startDate: 
+    endDate: 
+  addedRulesIDs: []
+  updatedRulesIDs: []
+  deletedRulesIDs: []
