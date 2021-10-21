@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.UI;
 
 public class AdManager : MonoBehaviour, IUnityAdsListener
 {
@@ -40,7 +41,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         {
             // Reward the user for watching the ad to completion.
             Debug.Log("Finished ad");
-            PlayerPrefs.SetInt("Lives", 4);
+            PlayerPrefs.SetInt("Lives", 9);
             Destroy(GameObject.FindGameObjectWithTag("DeathPanel"));
             gameManager.AdFinish(0.5f);
 
@@ -63,6 +64,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
         if (placementID == placementId)
         {
             // Optional actions to take when the placement becomes ready(For example, enable the rewarded ads button)
+            crossSceneManager.deathPanel.transform.GetChild(5).GetComponentInChildren<RawImage>().color = new Color(255, 255, 255, 255);
         }
     }
 

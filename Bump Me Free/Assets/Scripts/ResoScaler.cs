@@ -28,76 +28,20 @@ public class ResoScaler : MonoBehaviour
 
     void Adjust()
     {
-        if (Camera.main.aspect > 0.55)
-        {
-            canvasScaler.referenceResolution = new Vector2(4320, 2700);
-            is16_9 = true;
-        }
-        else
-        {
-            canvasScaler.referenceResolution = new Vector2(1920, 1080);
-            is16_9 = false;
-        }
-
-        //canvasScaler.referenceResolution = new Vector2(1920, 1080);
-
         if (SceneManager.GetActiveScene().name == "01")
         {
             canvasScaler.referenceResolution = new Vector2(4320, 2700);
-            if (Screen.width == 1800 && Screen.height == 2560)
-            {
-                scaler = 0.07f;
-            }
-            else if (Screen.width == 1200 && Screen.height == 1920)
-            {
-                scaler = 0.175f;
-            }
-            else if (Screen.width == 720 && Screen.height == 1280)
-            {
-                scaler = 0.255f;
-            }
-            else if (Screen.width == 1080 && Screen.height == 1920)
-            {
-                scaler = 0.25f;
-            }
-            else
-            {
-                scaler = 0.325f;
-            }
+            scaler = 0.15f;
         }
         else if (SceneManager.GetActiveScene().name == "Menu")
         {
-            if (is16_9)
-            {
-                scaler = 1f;
-            }
-            else
-            {
-                scaler = 0.25f;
-            }
+            canvasScaler.referenceResolution = new Vector2(1600f, 900f);
+            scaler = 0.25f;
         }
         else
         {
-            if (Screen.width == 1800 && Screen.height == 2560)
-            {
-                scaler = 0.925f;
-            }
-            else if (Screen.width == 1200 && Screen.height == 1920)
-            {
-                scaler = 0.925f;
-            }
-            else if (Screen.width == 720 && Screen.height == 1280)
-            {
-                scaler = 0.925f;
-            }
-            else if (Screen.width == 1080 && Screen.height == 1920)
-            {
-                scaler = 0.925f;
-            }
-            else
-            {
-                scaler = 0.2f;
-            }
+            canvasScaler.referenceResolution = new Vector2(4320, 2700);
+            scaler = 0.9f;
         }
 
         canvasScaler.matchWidthOrHeight = scaler;

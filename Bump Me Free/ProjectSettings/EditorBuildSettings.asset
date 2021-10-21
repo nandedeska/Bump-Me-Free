@@ -134,4 +134,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Credits.unity
     guid: 5e2a6f5c97f018b4ba137206c9b9af2d
+  - enabled: 1
+    path: Assets/Levels/Minigames.unity
+    guid: 55540563eb2373b42a83121f5aca0c37
+  - enabled: 1
+    path: Assets/Levels/Endless.unity
+    guid: b48c5fa95e189134d86c7c10762faced
+  - enabled: 0
+    path: Assets/Levels/Boss01.unity
+    guid: d658ce8aae1d5a145a849b4f3a02e9cc
   m_configObjects: {}

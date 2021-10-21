@@ -11,8 +11,7 @@ public class MainMenu : MonoBehaviour
     public int offset;
     public GameObject[] skins;
     public Button continueButton;
-    public Button sound;
-    public Sprite muted, unmuted;
+    public Image muted, unmuted;
     public GameObject updatePanel;
 
     public Color[] glowColors;
@@ -21,6 +20,7 @@ public class MainMenu : MonoBehaviour
     int colorIndex;
 
     public bool editor;
+    public bool actualMenu;
 
     GameManager game;
 
@@ -29,34 +29,64 @@ public class MainMenu : MonoBehaviour
 
     public string currentVersion;
 
+    public GameObject BMFLogo;
+    public Text coinText;
+    public bool isFriday;
+
     private void Start()
     {
         StartCoroutine(RunConfig(1f));
 
-        if (PlayerPrefs.GetInt("Level", 1) == 1)
+        if (actualMenu)
         {
-            continueButton.interactable = false;
-            continueButton.transform.GetComponentInChildren<Text>().color = new Color(1f, 1f, 1f, 0.5f);
+            if (PlayerPrefs.GetInt("Level", 1) == 1)
+            {
+                continueButton.interactable = false;
+                continueButton.transform.GetComponentInChildren<Text>().color = new Color(1f, 1f, 1f, 0.5f);
+            }
         }
 
         game = FindObjectOfType<GameManager>();
+
+        if (BMFLogo)
+        {
+            Debug.Log(System.DateTime.Now.DayOfWeek);
+
+            if(System.DateTime.Now.DayOfWeek == System.DayOfWeek.Friday)
+            {
+                isFriday = true;
+            }
+
+            if (isFriday)
+            {
+                BMFLogo.SetActive(true);
+                Debug.Log("Bump Me Friday Event");
+            }
+
+            coinText.text = PlayerPrefs.GetInt("Coins", 0).ToString();
+        }
     }
 
     private void Update()
     {
-        for (int i = 0; i < skins.Length; i++)
+        if (actualMenu)
         {
-            skins[i].SetActive(false);
-        }
-        skins[PlayerPrefs.GetInt("Skin", 0)].SetActive(true);
-        
-        if (PlayerPrefs.GetInt("Muted", 0) == 1)
-        {
-            sound.GetComponent<Image>().sprite = muted;
-        }
-        else
-        {
-            sound.GetComponent<Image>().sprite = unmuted;
+            for (int i = 0; i < skins.Length; i++)
+            {
+                skins[i].SetActive(false);
+            }
+            skins[PlayerPrefs.GetInt("Skin", 0)].SetActive(true);
+
+            if (PlayerPrefs.GetInt("Muted", 0) == 1)
+            {
+                muted.gameObject.SetActive(true);
+                unmuted.gameObject.SetActive(false);
+            }
+            else
+            {
+                muted.gameObject.SetActive(false);
+                unmuted.gameObject.SetActive(true);
+            }
         }
 
         /*foreach (GameObject text in glowingTexts)
@@ -91,7 +121,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(levelName);
         PlayerPrefs.SetInt("Level", 1);
-        PlayerPrefs.SetInt("Lives", 4);
+        PlayerPrefs.SetInt("Lives", 9);
         PlayerPrefs.SetInt("FadeStart", 0);
     }
 
@@ -100,6 +130,18 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(PlayerPrefs.GetInt("Level") + offset);
         PlayerPrefs.SetInt("FadeStart", 0);
     }
+
+    #region Minigames
+    public void Minigames()
+    {
+        SceneManager.LoadScene("Minigames");
+    }
+
+    public void EndlessMode()
+    {
+        SceneManager.LoadScene("Endless");
+    }
+    #endregion
 
     public void Skin(string dir)
     {

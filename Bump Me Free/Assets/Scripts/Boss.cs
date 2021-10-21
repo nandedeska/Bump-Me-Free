@@ -10,12 +10,14 @@ public class Boss : MonoBehaviour
     CameraShake shake;
     Color colorNorm;
     Color colorHit;
+    CrossSceneManager crossSceneManager;
 
     void Start()
     {
         shake = FindObjectOfType<CameraShake>();
         ColorUtility.TryParseHtmlString("#FF0066", out colorNorm);
         ColorUtility.TryParseHtmlString("#00FF99", out colorHit);
+        crossSceneManager = FindObjectOfType<CrossSceneManager>().GetComponent<CrossSceneManager>();
     }
 
     void Update()
@@ -33,8 +35,12 @@ public class Boss : MonoBehaviour
             hp--;
             player.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             player.gameObject.GetComponent<Player>().count = 2;
-            player.position = new Vector3(0f, -4.5f, 0f);
+            //player.position = new Vector3(0f, -.5f, 0f);
             StartCoroutine(HitEffect());
+            if (PlayerPrefs.GetInt("Muted", 0) == 0)
+            {
+                crossSceneManager.PlayExplosionSound();
+            }
             shake.Execute(1f, .25f);
         }
     }

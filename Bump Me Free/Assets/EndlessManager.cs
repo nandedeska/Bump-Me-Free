@@ -30,7 +30,7 @@ public class EndlessManager : MonoBehaviour
 
             foreach (GameObject wall in walls)
             {
-                wall.transform.position -= new Vector3(0f, speed, 0f) * Time.deltaTime;
+                wall.transform.position -= new Vector3(0f, Mathf.Clamp(score / 25, 1f, 10f), 0f) * Time.deltaTime;
             }
         }
     }

@@ -8,7 +8,7 @@ public class EndManager : MonoBehaviour
     public void MainMenu()
     {
         PlayerPrefs.SetInt("Level", 1);
-        PlayerPrefs.SetInt("Lives", 4);
+        PlayerPrefs.SetInt("Lives", 9);
         PlayerPrefs.SetInt("FadeStart", 0);
         SceneManager.LoadScene("Menu");
     }

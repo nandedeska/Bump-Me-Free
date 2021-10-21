@@ -14,18 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rsKeyList:
   - metadata:
-      entityId: e5fdd26b-5783-4018-b142-91dfdc4f5f11
+      entityId: 7b5b6cc8-bcb1-47d0-b6c7-4c171890144f
     rs:
       key: Version
       type: string
       value: v1.1
+  - metadata:
+      entityId: 775f282c-d743-44b1-8537-8ec87330e03a
+    rs:
+      key: isFriday
+      type: bool
+      value: false
   rsLastCachedKeyList:
   - metadata:
-      entityId: e5fdd26b-5783-4018-b142-91dfdc4f5f11
+      entityId: 7b5b6cc8-bcb1-47d0-b6c7-4c171890144f
     rs:
       key: Version
       type: string
       value: v1.1
+  - metadata:
+      entityId: 775f282c-d743-44b1-8537-8ec87330e03a
+    rs:
+      key: isFriday
+      type: bool
+      value: false
   configId: e63d9069-ff56-4f9b-a893-a1e619bad2d5
   currentEnvironmentId: c4e6680b-6ab1-4014-966c-8143391178a3
   environments:
@@ -42,39 +54,39 @@ MonoBehaviour:
     createdAt: 2020-12-12T01:24:06Z
     updatedAt: 2020-12-13T13:07:47Z
   rulesList:
-  - id: e8f1c8b7-a6cf-4f71-81e3-82744dffc0df
-    name: Update Checker
-    enabled: 1
-    priority: 1000
+  - id: aa6e5c54-92ca-45ea-b43b-1feedfb921be
+    name: Friday
+    enabled: 0
+    priority: 500
     type: 
-    condition: 
+    condition: true
     rolloutPercentage: 100
     value:
     - metadata:
-        entityId: e5fdd26b-5783-4018-b142-91dfdc4f5f11
+        entityId: 59242ab8-faa2-4c14-8334-f28a4c27a5d5
       rs:
-        key: Version
-        type: string
-        value: v1.0.2
-    startDate: 
-    endDate: 
+        key: 
+        type: variant
+        value: 
+    startDate: 2021-06-03T16:00:00Z
+    endDate: 2021-06-04T04:59:00Z
   lastCachedRulesList:
-  - id: e8f1c8b7-a6cf-4f71-81e3-82744dffc0df
-    name: Update Checker
-    enabled: 1
-    priority: 1000
+  - id: aa6e5c54-92ca-45ea-b43b-1feedfb921be
+    name: Friday
+    enabled: 0
+    priority: 500
     type: 
-    condition: 
+    condition: true
     rolloutPercentage: 100
     value:
     - metadata:
-        entityId: e5fdd26b-5783-4018-b142-91dfdc4f5f11
+        entityId: 59242ab8-faa2-4c14-8334-f28a4c27a5d5
       rs:
-        key: Version
-        type: string
-        value: v1.0.2
-    startDate: 
-    endDate: 
+        key: 
+        type: variant
+        value: 
+    startDate: 2021-06-03T16:00:00Z
+    endDate: 2021-06-04T04:59:00Z
   addedRulesIDs: []
   updatedRulesIDs: []
   deletedRulesIDs: []

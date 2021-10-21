@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,6 +25,8 @@ public class GameManager : MonoBehaviour
     EndlessManager endlessManager;
 
     [HideInInspector] public bool finished;
+    bool isFriday;
+    public GameObject BMFLogo;
 
     #region Start
 
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         #region Death
 
-        if (PlayerPrefs.GetInt("Lives", 4) < 0)
+        if (PlayerPrefs.GetInt("Lives", 9) < 0)
         {
             // Stop time
             Time.timeScale = 0;
@@ -103,6 +104,11 @@ public class GameManager : MonoBehaviour
         Color bgColor; 
         ColorUtility.TryParseHtmlString("#1F1829", out bgColor);
         Camera.main.backgroundColor = bgColor;
+
+        if (System.DateTime.Now.DayOfWeek == System.DayOfWeek.Friday)
+        {
+            isFriday = true;
+        }
     }
 
     #endregion
@@ -112,45 +118,86 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (disablePanelManager) return;
-        livesText.text = PlayerPrefs.GetInt("Lives", 4).ToString();
+        livesText.text = PlayerPrefs.GetInt("Lives", 9).ToString();
     }
 
     #endregion
 
     #region Die
 
-    public void Die(float delay, int index)
+    public void Die(float delay, string type = "Default")
     {
-        switch (index)
+        switch (type)
         {
-            case 0:
+            case "Default":
                 StartCoroutine(DieRoutine(delay));
                 break;
 
-            case 1:
-                StartCoroutine(Die_Endless(delay));
+            case "Endless":
+                StartCoroutine(DieCustom(delay, "Endless"));
                 break;
         }
     }
 
-    public IEnumerator Die_Endless(float delay)
+    public IEnumerator DieCustom(float delay, string type)
     {
-        Destroy(player);
-        Destroy(skin);
-        crossSceneManager.Explosion();
-        endlessManager.dead = true;
-        if (PlayerPrefs.GetInt("Muted", 0) == 0)
+        switch (type)
         {
-            crossSceneManager.PlayExplosionSound();
+            case "Endless":
+                Destroy(player);
+                Destroy(skin);
+                crossSceneManager.Explosion();
+
+                endlessManager.dead = true;
+
+                if (PlayerPrefs.GetInt("Muted", 0) == 0)
+                {
+                    crossSceneManager.PlayExplosionSound();
+                }
+
+                yield return new WaitForSeconds(delay);
+
+                if (Mathf.FloorToInt(endlessManager.score) > PlayerPrefs.GetInt("High Score"))
+                {
+                    PlayerPrefs.SetInt("High Score", Mathf.FloorToInt(endlessManager.score));
+                }
+
+                int multiplier;
+                var panel = endlessManager.endlessLosePanel;
+                panel.SetActive(true);
+                panel.transform.GetChild(2).GetComponent<Text>().text = "Score: " + Mathf.FloorToInt(endlessManager.score);
+                panel.transform.GetChild(3).GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("High Score");
+                if (isFriday)
+                {
+                    multiplier = 2;
+                    panel.transform.GetChild(5).GetComponent<Text>().text = $"Multiplier: {multiplier}x";
+                    if (BMFLogo)
+                    {
+                        BMFLogo.SetActive(true);
+                    }
+                }
+                else
+                {
+                    multiplier = 1;
+                    panel.transform.GetChild(5).GetComponent<Text>().text = $"Multiplier: {multiplier}x";
+                }
+
+                panel.transform.GetChild(4).GetComponent<Text>().text = "Coins Earned: " + Mathf.FloorToInt(endlessManager.score / 4 * multiplier);
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + Mathf.FloorToInt(endlessManager.score / 4 * multiplier));
+
+                break;
+
+            default:
+                crossSceneManager.Explosion();
+
+                if (PlayerPrefs.GetInt("Muted", 0) == 0)
+                {
+                    crossSceneManager.PlayExplosionSound();
+                }
+
+                player.transform.position = player.GetComponent<Player>().startPos;
+                break;
         }
-
-        yield return new WaitForSeconds(delay);
-
-        PlayerPrefs.SetInt("High Score", Mathf.FloorToInt(endlessManager.score));
-        var panel = endlessManager.endlessLosePanel;
-        panel.SetActive(true);
-        panel.transform.GetChild(2).GetComponent<Text>().text = "Score: " + Mathf.FloorToInt(endlessManager.score);
-        panel.transform.GetChild(3).GetComponent<Text>().text = "High Score: " + PlayerPrefs.GetInt("High Score", 0);
     }
 
     public void JumpDie(float delay)
@@ -175,13 +222,13 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex > 6 && SceneManager.GetActiveScene().name != "Endless")
         {
             // Decrement player's lives
-            PlayerPrefs.SetInt("Lives", PlayerPrefs.GetInt("Lives", 4) - 1);
+            PlayerPrefs.SetInt("Lives", PlayerPrefs.GetInt("Lives", 9) - 1);
 
             // Load lives panel
             GameObject _livesPanel = Instantiate(livesPanel, canvas, true);
             _livesPanel.transform.localPosition = Vector3.zero;
             _livesPanel.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            livesText.text = PlayerPrefs.GetInt("Lives", 4).ToString();
+            livesText.text = PlayerPrefs.GetInt("Lives", 9).ToString();
         }
 
         // Reload the scene
@@ -234,7 +281,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
-        PlayerPrefs.SetInt("Lives", 4);
+        PlayerPrefs.SetInt("Lives", 9);
         PlayerPrefs.SetInt("Level", SceneManager.GetActiveScene().buildIndex - 3);
     }
 

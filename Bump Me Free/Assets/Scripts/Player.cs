@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     Vector2 mousePos;
     public Rigidbody2D rb;
     public float force = 500f;
-    Vector3 startPos;
+    [HideInInspector] public Vector3 startPos;
 
     Transform canvas;
 
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
         //touchButton = game.touchButton;
         //jumpText = game.jumpText;
 
-        if(PlayerPrefs.GetInt("Lives", 4) < 0)
+        if(PlayerPrefs.GetInt("Lives", 9) < 0)
         {
             gameObject.SetActive(false);
         }
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
             }            
         }
 
-        if (PlayerPrefs.GetInt("Lives", 4) < 0)
+        if (PlayerPrefs.GetInt("Lives", 9) < 0)
         {
             gameObject.SetActive(false);
         }
@@ -112,28 +112,24 @@ public class Player : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0f;
             shake.Execute(1f, .05f);
-            /*if(SceneManager.GetActiveScene().name == "Boss01")
+            if(SceneManager.GetActiveScene().name == "Boss01")
             {
                 if(boss.hp == 1)
                 {
                     transform.position = startPos + new Vector3(0f, 1f, 0f);
                     bossManager.LavaReset();
                 }
-                else
-                {
-                    transform.position = startPos;
-                }
                 count = 2;
                 WallReload();
                 DestroyMissiles();
-            }*/
-            if(SceneManager.GetActiveScene().name != "Endless")
+            }
+            if(SceneManager.GetActiveScene().name == "Endless")
             {
-                game.Die(1f, 0);
+                game.Die(1f, "Endless");
             }
             else
             {
-                game.Die(1f, 1);
+                game.Die(1f);
             }
         }
     }

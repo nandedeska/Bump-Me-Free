@@ -155,6 +155,7 @@ MonoBehaviour:
   deathPanel: {fileID: 0}
   livesPanel: {fileID: 0}
   canvas: {fileID: 0}
+  crossSceneManager: {fileID: 0}
   disablePanelManager: 0
   player: {fileID: 0}
   finished: 0
@@ -733,12 +734,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 4320, y: 2700}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.9
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -776,6 +777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a0dfcdb648d5948b4a6560e0a56be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  update: 0
 --- !u!1 &493160226
 GameObject:
   m_ObjectHideFlags: 0
